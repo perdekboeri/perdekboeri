@@ -1,0 +1,22 @@
+
+name: perdekboeri
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo 'Disk space usage:' && df -h
+    - run: uname -a  # Kiểm tra hệ thống
+    - run: echo 'Memory check:' && free -h
+    - run: echo 'Node version check:' && node -v
+    - run: echo 'Starting workflow setup...'
+    - run: timeout 60m node app.js
+    # Running in debug mode
+    # Note: Temporary setup
+    # Automated by script v1.0
+    # Data verification enabled
